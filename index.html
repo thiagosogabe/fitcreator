@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
+<!-- Facebook Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4247280335521120');
+fbq('track', 'PageView');
+
+// Evento: usuário entra no app
+function trackAppOpen() {
+  fbq('track', 'ViewContent', {content_name: 'App FitCreator', content_type: 'software'});
+}
+
+// Evento: clique no botão de assinar Pro
+function trackInitiateCheckout() {
+  fbq('track', 'InitiateCheckout', {value: 47.00, currency: 'BRL', content_name: 'FitCreator Pro'});
+}
+
+// Evento: completou onboarding
+function trackRegistration() {
+  fbq('track', 'CompleteRegistration', {content_name: 'Onboarding FitCreator'});
+}
+
+// Evento: gerou conteúdo (engajamento)
+function trackContentGenerated() {
+  fbq('trackCustom', 'ContentGenerated', {content_type: 'ai_content'});
+}
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=4247280335521120&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1695,6 +1733,7 @@ html,body{height:auto !important;overflow:auto !important;}
 <script>
 
 function showApp() {
+  if(typeof fbq !== "undefined") { fbq("track", "ViewContent", {content_name: "App FitCreator"}); }
   document.getElementById('landing-page').style.display = 'none';
   var ap = document.getElementById('app-page');
   ap.style.display = 'flex';
@@ -1880,6 +1919,7 @@ function finishOb(){
     return;
   }
   document.getElementById('ob').classList.add('off');
+  if(typeof fbq !== "undefined") { fbq("track", "CompleteRegistration"); }
   document.getElementById('app').style.display='flex';
   // Avatar
   const ini=niche.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
@@ -2103,6 +2143,7 @@ function ativarCodigo(){
 }
 const HOTMART_URL='https://pay.hotmart.com/L105985208J';
 function irParaCheckout(){
+  if(typeof fbq !== "undefined") { fbq("track", "InitiateCheckout", {value: 47.00, currency: "BRL"}); }
   toast('🚀','Redirecionando para pagamento...');
   setTimeout(()=>{
     plan='pro';credits=999999;
