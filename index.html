@@ -1631,7 +1631,7 @@ html,body{height:auto !important;overflow:auto !important;}
         <div style="text-align:center;font-size:11px;color:var(--t3);margin-top:10px">PIX · Boleto · Cartão · Cancele quando quiser</div>
         <div style="height:1px;background:var(--b);margin:14px 0"></div>
         <button class="btn-o" onclick="hideUp();setTimeout(()=>document.getElementById('activateModal').classList.add('on'),200)" style="margin-bottom:8px">🔑 Já tenho um código de ativação</button>
-        <button class="btn-o" onclick="hideUp()">Continuar no plano gratuito</button>
+        <button onclick="hideUp()" style="margin-top:8px;color:#999;border:1px solid rgba(255,255,255,.22);padding:13px;font-size:13px;font-family:'DM Sans',sans-serif;border-radius:10px;width:100%;background:transparent;cursor:pointer;display:block;text-align:center;">← Continuar no plano gratuito</button>
       </div>
     </div>
   </div>
@@ -2144,21 +2144,9 @@ function ativarCodigo(){
 const HOTMART_URL='https://pay.hotmart.com/L105985208J';
 function irParaCheckout(){
   if(typeof fbq !== "undefined") { fbq("track", "InitiateCheckout", {value: 47.00, currency: "BRL"}); }
-  toast('🚀','Redirecionando para pagamento...');
-  setTimeout(()=>{
-    plan='pro';credits=999999;
-    updateCredUI();updatePremiumUI();
-    ['contBtn','idBtn','rotBtn','hkBtn'].forEach(id=>{
-      const btn=document.getElementById(id);if(!btn)return;
-      btn.disabled=false;
-      if(id==='contBtn'){btn.textContent='✨ Gerar Conteúdo Completo';btn.onclick=genConteudo;}
-      if(id==='idBtn'){btn.textContent='✨ Gerar 6 Ideias';btn.onclick=genIdeas;}
-      if(id==='rotBtn'){btn.textContent='✨ Criar Roteiro';btn.onclick=genRoteiro;}
-      if(id==='hkBtn'){btn.textContent='⚡ Gerar Hooks';btn.onclick=genHooks;}
-    });
-    hideUp();
-    setTimeout(()=>toast('🎉','Pro ativado! Tudo desbloqueado. 🔓'),300);
-  },1500);
+  hideUp();
+  toast('🚀','Abrindo checkout seguro...');
+  setTimeout(()=>{ window.open('https://pay.hotmart.com/L105985208J','_blank'); }, 300);
 }
 
 // ── API ──
