@@ -12,8 +12,21 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '4247280335521120');
-fbq('track', 'PageView');
+fbq('init', '4247280335521120', {
+  autoConfig: true,
+  debug: false
+});
+
+// Captura fbclid da URL automaticamente
+(function(){
+  var url = new URL(window.location.href);
+  var fbclid = url.searchParams.get('fbclid');
+  if(fbclid){
+    var expiry = new Date();
+    expiry.setDate(expiry.getDate()+90);
+    document.cookie='_fbc=fb.1.'+Date.now()+'.'+fbclid+';expires='+expiry.toUTCString()+';path=/';
+  }
+})();fbq('track', 'PageView');
 
 // Evento: usuário entra no app
 function trackAppOpen() {
@@ -981,8 +994,11 @@ html,body{height:auto !important;overflow:auto !important;}
       <div class="ob-opt" onclick="selG(this,'redes')"><span class="ob-opt-i">📈</span>Crescer nas Redes</div>
       <div class="ob-opt" onclick="selG(this,'referencia')"><span class="ob-opt-i">🏆</span>Virar Referência</div>
     </div>
-    <button class="btn" style="margin-top:4px" onclick="finishOb()">Entrar no FitCreator →</button>
-  </div>
+<div style="margin-bottom:12px">
+  <input class="inp" id="obEmail" type="email" placeholder="Seu e-mail (opcional — para novidades)" style="text-align:center;font-size:14px;margin-bottom:0">
+  <div style="font-size:11px;color:var(--t2);margin-top:4px;text-align:center">🔒 Nunca enviamos spam</div>
+</div>
+<button class="btn" style="margin-top:4px" onclick="finishOb()">Entrar no FitCreator →</button>  </div>
 </div>
 
 <!-- ══ APP ══ -->
@@ -1911,8 +1927,34 @@ function shakeGrid(sel,warnId,msg){
   }
   setTimeout(()=>{const w=document.getElementById(warnId);if(w)w.remove();},3000);
 }
-function finishOb(){
-  // Obriga escolha de objetivo
+async function hashSHA256(txt){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(txt.trim().toLowerCase()));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+async function finishOb(){
+  const emailEl = document.getElementById('obEmail');
+  const email = emailEl ? emailEl.value.trim() : '';
+  
+  if(typeof fbq !== "undefined"){
+    if(email && email.includes('@')){
+      const hashedEmail = await hashSHA256(email);
+      fbq('track', 'CompleteRegistration', {
+        content_name: 'Onboarding FitCreator',
+        status: true
+      }, {
+        em: hashedEmail,
+        eventID: 'reg_' + Date.now()
+      });
+    } else {
+      fbq('track', 'CompleteRegistration', {
+        content_name: 'Onboarding FitCreator',
+        status: true
+      }, {
+        eventID: 'reg_' + Date.now()
+      });
+    }
+  }  // Obriga escolha de objetivo
   const selGoalEl=document.querySelector('#ob3 .ob-opt.on');
   if(!selGoalEl){
     shakeGrid('#ob3 .ob-grid','ob3warn','⚠️ Escolha seu objetivo para continuar');
