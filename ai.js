@@ -1,35 +1,35 @@
-exports.handler = async (event) => {
-  // Só aceita POST
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
-  }
+export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
+    const { prompt, system } = req.body;
+    if (!prompt) return res.status(400).json({ error: 'Prompt obrigatorio' });
+
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': process.env.ANTHROPIC_KEY,
+        'x-api-key': process.env.ANTHROPIC_API_KEY,
         'anthropic-version': '2023-06-01'
       },
-      body: event.body
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1024,
+        system: system || 'Voce e um especialista em criacao de conteudo para personal trainers brasileiros. Escreva sempre em portugues do Brasil.',
+        messages: [{ role: 'user', content: prompt }]
+      })
     });
 
     const data = await response.json();
+    const text = data.content?.[0]?.text || '';
+    return res.status(200).json({ result: text });
 
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    };
-
-  } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Erro interno. Tente novamente.' })
-    };
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
   }
-};
+}
