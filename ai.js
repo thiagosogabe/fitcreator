@@ -22,4 +22,10 @@ export default async function handler(req, res) {
         messages: [{ role: "user", content: prompt }]
       })
     });
-    const data = await r.j
+    const data = await r.json();
+    const text = data.content && data.content[0] ? data.content[0].text : "";
+    return res.status(200).json({ result: text });
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
+  }
+}
