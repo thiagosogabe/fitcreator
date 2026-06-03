@@ -20,10 +20,15 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1024,
-        system: system || 'Voce e um especialista em criacao de conteudo para personal trainers brasileiros. Escreva sempre em portugues do Brasil.',
+        system: system || 'Você é um especialista em criação de conteúdo para personal trainers brasileiros.',
         messages: [{ role: 'user', content: prompt }]
       })
     });
+
+    if (!response.ok) {
+      const err = await response.json();
+      return res.status(response.status).json({ error: err });
+    }
 
     const data = await response.json();
     const text = data.content?.[0]?.text || '';
