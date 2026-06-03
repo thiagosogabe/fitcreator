@@ -23,7 +23,15 @@ export default async function handler(req, res) {
       })
     });
     const data = await r.json();
-    const text = data.content && data.content[0] ? data.content[0].text : "";
+    // Log completo para debug
+    console.log("Anthropic response:", JSON.stringify(data));
+    if (data.error) {
+      return res.status(500).json({ error: JSON.stringify(data.error) });
+    }
+    if (!data.content || !data.content[0]) {
+      return res.status(500).json({ error: "empty response", raw: JSON.stringify(data) });
+    }
+    const text = data.content[0].text || "";
     return res.status(200).json({ result: text });
   } catch (e) {
     return res.status(500).json({ error: e.message });
