@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Seu Kit chegou! — FitCreator</title>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','4247280335521120');
+fbq('track','PageView');
+fbq('track','Purchase',{value:19.90,currency:'BRL',content_name:'Kit FitCreator'});
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#080808;--card:#141414;--card2:#1a1a1a;
+  --lime:#C8F135;--lime2:#a8d420;
+  --text:#ffffff;--t2:#cccccc;--t3:#777;
+  --red:#ff4444;--orange:#ff8c00;
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;padding:0 0 60px;}
+
+/* GLOW TOP */
+.glow-top{position:fixed;top:0;left:0;right:0;height:300px;background:radial-gradient(ellipse at 50% 0%,rgba(200,241,53,.08) 0%,transparent 70%);pointer-events:none;z-index:0;}
+
+/* URGENCY BAR */
+.urgency-bar{
+  background:var(--red);
+  padding:12px 20px;
+  text-align:center;
+  font-size:14px;font-weight:700;
+  color:#fff;letter-spacing:.3px;
+  position:relative;z-index:10;
+}
+.urgency-bar span{color:#ffff88;}
+
+/* CONTENT */
+.wrap{max-width:480px;margin:0 auto;padding:0 20px;position:relative;z-index:1;}
+
+/* KIT CONFIRMED */
+.kit-ok{
+  text-align:center;
+  padding:36px 0 28px;
+  border-bottom:1px solid #222;
+  margin-bottom:28px;
+}
+.check-icon{
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(200,241,53,.12);
+  border:2px solid rgba(200,241,53,.4);
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;margin:0 auto 16px;
+  animation:pop .4s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.kit-ok h2{font-size:22px;font-weight:800;margin-bottom:8px;}
+.kit-ok h2 span{color:var(--lime);}
+.kit-ok p{font-size:14px;color:var(--t2);line-height:1.6;max-width:320px;margin:0 auto;}
+
+/* TIMER */
+.timer-section{
+  background:var(--card);
+  border:1.5px solid #2a2a2a;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:24px;
+  text-align:center;
+}
+.timer-label{font-size:12px;font-weight:700;color:var(--red);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+.timer-boxes{display:flex;align-items:center;justify-content:center;gap:8px;}
+.tbox{
+  background:#111;border:1px solid #2a2a2a;
+  border-radius:10px;padding:10px 14px;min-width:58px;
+}
+.tbox-num{font-size:28px;font-weight:900;color:var(--lime);line-height:1;font-variant-numeric:tabular-nums;}
+.tbox-label{font-size:10px;color:var(--t3);margin-top:3px;font-weight:600;letter-spacing:.5px;}
+.tsep{font-size:24px;font-weight:900;color:var(--t3);margin-bottom:14px;}
+.timer-warn{font-size:13px;color:var(--t2);margin-top:12px;line-height:1.5;}
+.timer-warn strong{color:#fff;}
+
+/* OFFER HEADLINE */
+.offer-head{margin-bottom:20px;}
+.offer-tag{
+  display:inline-block;
+  background:var(--red);color:#fff;
+  font-size:11px;font-weight:800;
+  padding:4px 14px;border-radius:20px;
+  letter-spacing:1px;margin-bottom:14px;
+}
+.offer-title{
+  font-size:28px;font-weight:900;
+  line-height:1.15;letter-spacing:-.5px;
+  margin-bottom:10px;
+}
+.offer-title .hl{color:var(--lime);}
+.offer-desc{font-size:15px;color:var(--t2);line-height:1.65;}
+
+/* WHAT YOU GET */
+.section-label{
+  font-size:11px;font-weight:700;color:var(--t3);
+  letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:14px;margin-top:24px;
+}
+.feat-item{
+  display:flex;align-items:flex-start;gap:12px;
+  background:var(--card2);border:1px solid #222;
+  border-radius:12px;padding:14px;margin-bottom:10px;
+}
+.feat-icon{
+  width:42px;height:42px;border-radius:10px;
+  background:rgba(200,241,53,.1);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+}
+.feat-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px;}
+.feat-desc{font-size:12px;color:var(--t2);line-height:1.5;}
+
+/* SOCIAL PROOF */
+.proof{
+  background:var(--card);border:1px solid #222;
+  border-radius:12px;padding:16px;margin-bottom:10px;
+}
+.proof-stars{color:var(--lime);font-size:13px;margin-bottom:8px;}
+.proof-text{font-size:13px;color:var(--t2);line-height:1.6;margin-bottom:10px;font-style:italic;}
+.proof-author{display:flex;align-items:center;gap:10px;}
+.proof-avatar{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;flex-shrink:0;
+}
+.proof-name{font-size:13px;font-weight:700;color:#fff;}
+.proof-handle{font-size:11px;color:var(--t3);}
+
+/* PRICE BOX */
+.price-box{
+  background:var(--card);
+  border:2px solid var(--lime);
+  border-radius:20px;
+  padding:24px 20px;
+  margin:24px 0 16px;
+  text-align:center;
+  box-shadow:0 0 40px rgba(200,241,53,.1);
+}
+.price-tag{
+  display:inline-block;
+  background:rgba(200,241,53,.15);
+  border:1px solid rgba(200,241,53,.3);
+  border-radius:20px;padding:4px 14px;
+  font-size:13px;font-weight:700;color:var(--lime);
+  margin-bottom:12px;
+}
+.price-old{font-size:14px;color:var(--t3);text-decoration:line-through;margin-bottom:6px;}
+.price-main{font-size:52px;font-weight:900;color:var(--lime);line-height:1;}
+.price-period{font-size:14px;color:var(--t2);margin-top:6px;margin-bottom:6px;}
+.price-economy{font-size:13px;color:var(--lime);font-weight:700;margin-bottom:20px;}
+
+.cta-btn{
+  width:100%;background:var(--lime);color:#000;
+  border:none;border-radius:14px;padding:20px;
+  font-size:18px;font-weight:900;cursor:pointer;
+  letter-spacing:.3px;
+  box-shadow:0 0 50px rgba(200,241,53,.35);
+  transition:all .15s;
+  animation:pulse 2s ease infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 30px rgba(200,241,53,.3);}
+  50%{box-shadow:0 0 60px rgba(200,241,53,.6);}
+}
+.cta-btn:active{transform:scale(.97);background:var(--lime2);}
+.guarantee{display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px;color:var(--t2);margin-top:12px;}
+
+/* SKIP */
+.skip{
+  text-align:center;margin-top:20px;
+  font-size:13px;color:var(--t3);
+}
+.skip a{color:var(--t3);text-decoration:underline;cursor:pointer;}
+
+/* CONFETTI */
+.confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+</style>
+</head>
+<body>
+
+<div class="glow-top"></div>
+<canvas class="confetti" id="confetti"></canvas>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  ⏳ Essa oferta <span>some em <span id="barTimer">15:00</span></span> — exclusiva para quem acabou de comprar
+</div>
+
+<div class="wrap">
+
+  <!-- KIT CONFIRMADO -->
+  <div class="kit-ok">
+    <div class="check-icon">✅</div>
+    <h2>Kit recebido com <span>sucesso!</span> 🎉</h2>
+    <p>Acesse seu e-mail — o Kit chegou. Agora, antes de fechar essa página, leia com atenção o que está abaixo.</p>
+  </div>
+
+  <!-- TIMER -->
+  <div class="timer-section">
+    <div class="timer-label">🔴 oferta expira em</div>
+    <div class="timer-boxes">
+      <div class="tbox"><div class="tbox-num" id="tMin">15</div><div class="tbox-label">MIN</div></div>
+      <div class="tsep">:</div>
+      <div class="tbox"><div class="tbox-num" id="tSec">00</div><div class="tbox-label">SEG</div></div>
+    </div>
+    <p class="timer-warn">Quando o contador zerar, o preço volta para <strong>R$39,90/mês</strong>.<br>Essa página não vai aparecer de novo.</p>
+  </div>
+
+  <!-- HEADLINE -->
+  <div class="offer-head">
+    <div class="offer-tag">🚨 OFERTA ÚNICA — NÃO VAI SE REPETIR</div>
+    <h2 class="offer-title">
+      Você tem o kit.<br>
+      Agora deixa a <span class="hl">IA criar</span><br>
+      pra você.
+    </h2>
+    <p class="offer-desc">
+      O Kit te dá a estrutura. O FitCreator Pro executa em 30 segundos — roteiro completo, hook, legenda e hashtags gerados pela IA. Você só grava.
+    </p>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="section-label">o que você desbloqueia agora</div>
+
+  <div class="feat-item">
+    <div class="feat-icon">⚡</div>
+    <div>
+      <div class="feat-name">Conteúdo completo em 30 segundos</div>
+      <div class="feat-desc">Digite um tema, a IA monta tudo — gancho, roteiro, legenda e hashtags. Só copiar e gravar.</div>
+    </div>
+  </div>
+
+  <div class="feat-item">
+    <div class="feat-icon">🎯</div>
+    <div>
+      <div class="feat-name">Hooks e Roteiros Virais com IA</div>
+      <div class="feat-desc">Estrutura de vídeo que prende nos primeiros 3 segundos. Testada por +1.200 personais.</div>
+    </div>
+  </div>
+
+  <div class="feat-item">
+    <div class="feat-icon">📈</div>
+    <div>
+      <div class="feat-name">Trends e Músicas em Alta</div>
+      <div class="feat-desc">O que está explodindo no fitness agora. Use antes que todo mundo copie.</div>
+    </div>
+  </div>
+
+  <div class="feat-item">
+    <div class="feat-icon">🔬</div>
+    <div>
+      <div class="feat-name">Score Viral — analise antes de postar</div>
+      <div class="feat-desc">A IA pontua seu conteúdo e dá sugestões para maximizar o alcance antes de publicar.</div>
+    </div>
+  </div>
+
+  <div class="feat-item">
+    <div class="feat-icon">🏆</div>
+    <div>
+      <div class="feat-name">Desafio 30 Dias + Gamificação</div>
+      <div class="feat-desc">XP, streak e medalhas de consistência. Quem chega a 365 dias ganha presente da equipe.</div>
+    </div>
+  </div>
+
+  <!-- DEPOIMENTOS -->
+  <div class="section-label" style="margin-top:28px;">o que dizem quem usa</div>
+
+  <div class="proof">
+    <div class="proof-stars">★★★★★</div>
+    <p class="proof-text">"Em 3 dias de uso já tinha roteiros para a semana inteira. Nunca mais fiquei travado. Fechei 2 alunos novos que me encontraram pelo TikTok."</p>
+    <div class="proof-author">
+      <div class="proof-avatar" style="background:linear-gradient(135deg,#C8F135,#a8d420);color:#000;">RA</div>
+      <div><div class="proof-name">Rafael Andrade</div><div class="proof-handle">Personal · SP · 12,4k seguidores</div></div>
+    </div>
+  </div>
+
+  <div class="proof">
+    <div class="proof-stars">★★★★★</div>
+    <p class="proof-text">"Os hooks mudaram tudo. Um vídeo viralizou com 380k views e trouxe 8 alunos novos em uma semana. Sem exagero."</p>
+    <div class="proof-author">
+      <div class="proof-avatar" style="background:linear-gradient(135deg,#b97cff,#4d9fff);color:#fff;">MC</div>
+      <div><div class="proof-name">Marina Costa</div><div class="proof-handle">Personal · RJ · 28k seguidores</div></div>
+    </div>
+  </div>
+
+  <!-- PRICE -->
+  <div class="price-box">
+    <div class="price-tag">🎁 Exclusivo para quem comprou o Kit</div>
+    <div class="price-old">De R$109,90/mês</div>
+    <div class="price-main">R$39,90</div>
+    <div class="price-period">por mês</div>
+    <div class="price-economy">Você economiza R$70 — só nessa página</div>
+    <button class="cta-btn" onclick="goProCheckout()">
+      ⚡ Quero o FitCreator Pro Agora →
+    </button>
+    <div class="guarantee">🔒 Garantia de 7 dias · Cancele quando quiser</div>
+  </div>
+
+  <!-- SKIP -->
+  <div class="skip">
+    <a onclick="skipOffer()">Não quero a oferta — seguir sem o Pro</a>
+  </div>
+
+</div>
+
+<script>
+// ── TIMER ──
+let totalSeconds = 15 * 60;
+const barTimer = document.getElementById('barTimer');
+const tMin = document.getElementById('tMin');
+const tSec = document.getElementById('tSec');
+
+function updateTimer() {
+  if (totalSeconds <= 0) {
+    tMin.textContent = '00';
+    tSec.textContent = '00';
+    barTimer.textContent = '00:00';
+    document.querySelector('.cta-btn').textContent = '⚡ Ver oferta normal →';
+    return;
+  }
+  totalSeconds--;
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  const mStr = String(m).padStart(2, '0');
+  const sStr = String(s).padStart(2, '0');
+  tMin.textContent = mStr;
+  tSec.textContent = sStr;
+  barTimer.textContent = mStr + ':' + sStr;
+
+  // Red flash when under 3 min
+  if (totalSeconds < 180) {
+    tMin.style.color = '#ff4444';
+    tSec.style.color = '#ff4444';
+  }
+}
+setInterval(updateTimer, 1000);
+
+// ── CHECKOUT ──
+function goProCheckout() {
+  fbq('track', 'InitiateCheckout', {
+    value: 39.90,
+    currency: 'BRL',
+    content_name: 'FitCreator Pro Upsell'
+  });
+  window.location.href = 'https://pay.hotmart.com/L105985208J';
+}
+
+function skipOffer() {
+  if (confirm('Tem certeza? Essa oferta não estará disponível depois.')) {
+    window.location.href = '/';
+  }
+}
+
+// ── CONFETTI ──
+const canvas = document.getElementById('confetti');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const colors = ['#C8F135','#32d583','#fff','#ffaa00'];
+const pieces = Array.from({length:60},()=>({
+  x:Math.random()*canvas.width,
+  y:Math.random()*canvas.height - canvas.height,
+  r:Math.random()*5+2,
+  c:colors[Math.floor(Math.random()*colors.length)],
+  vx:(Math.random()-.5)*1.5,
+  vy:Math.random()*2.5+1,
+  op:Math.random()*.6+.3
+}));
+let frame=0;
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  pieces.forEach(p=>{
+    ctx.globalAlpha=p.op;
+    ctx.fillStyle=p.c;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.y>canvas.height){p.y=-10;p.x=Math.random()*canvas.width;}
+  });
+  ctx.globalAlpha=1;
+  if(frame++<300) requestAnimationFrame(draw);
+}
+draw();
+</script>
+</body>
+</html>
