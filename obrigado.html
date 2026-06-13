@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bem-vindo ao Pro! — FitCreator AI</title>
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','4247280335521120');
+    fbq('track','PageView');
+    // ✅ CORRIGIDO: params declarado UMA vez aqui
+    var params=new URLSearchParams(window.location.search);
+    var transactionId=params.get('transaction')||'purchase_'+Date.now();
+    fbq('track','Purchase',{value:39.90,currency:'BRL',content_name:'FitCreator Pro'},{eventID:transactionId});
+    fetch('/api/meta-purchase',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({transactionId,email:params.get('email')||'',value:39.90,currency:'BRL',eventSourceUrl:window.location.href,userAgent:navigator.userAgent})
+    }).catch(function(){});
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{--lime:#C8F135;--lime2:#a8d420;--bg:#080808;--card:#141414;--text:#fff;--t2:#ccc;--t3:#666;--red:#ff4444;}
+    body{min-height:100vh;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;}
+    .glow{position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 50% 20%,rgba(200,241,53,.07) 0%,transparent 65%);pointer-events:none;}
+    .confetti{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+    .wrap{position:relative;z-index:1;width:100%;max-width:400px;display:flex;flex-direction:column;align-items:center;text-align:center;}
+    .check{width:72px;height:72px;border-radius:50%;background:rgba(200,241,53,.1);border:2px solid rgba(200,241,53,.35);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 20px;animation:pop .5s cubic-bezier(.34,1.56,.64,1);}
+    @keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+    h1{font-size:26px;font-weight:800;margin-bottom:8px;line-height:1.2;}
+    h1 span{color:var(--lime);}
+    .sub{font-size:14px;color:var(--t2);line-height:1.65;max-width:320px;margin:0 auto 28px;}
+    .steps{width:100%;background:var(--card);border:1px solid #222;border-radius:16px;padding:20px;margin-bottom:24px;text-align:left;}
+    .steps-title{font-size:11px;font-weight:700;color:var(--lime);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+    .step-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;}
+    .step-row:last-child{margin-bottom:0;}
+    .step-num{width:28px;height:28px;border-radius:50%;background:rgba(200,241,53,.12);border:1px solid rgba(200,241,53,.3);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--lime);flex-shrink:0;}
+    .step-num.done{background:rgba(200,241,53,.2);border-color:var(--lime);}
+    .step-text{font-size:13px;color:var(--t2);line-height:1.5;padding-top:4px;}
+    .step-text strong{color:#fff;}
+    .form-box{width:100%;background:var(--card);border:1.5px solid rgba(200,241,53,.25);border-radius:16px;padding:22px;margin-bottom:20px;text-align:left;}
+    .form-title{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px;}
+    .form-sub{font-size:13px;color:var(--t2);margin-bottom:18px;}
+    .inp{width:100%;background:#0f0f0f;border:1.5px solid #2a2a2a;border-radius:10px;padding:14px 16px;font-size:15px;color:#fff;font-family:'Inter',sans-serif;margin-bottom:12px;outline:none;transition:border-color .2s;}
+    .inp:focus{border-color:rgba(200,241,53,.5);}
+    .inp::placeholder{color:#444;}
+    .err{font-size:12px;color:var(--red);margin-bottom:10px;display:none;text-align:center;}
+    .btn-cad{width:100%;background:var(--lime);color:#000;border:none;border-radius:12px;padding:17px;font-size:16px;font-weight:800;font-family:'Inter',sans-serif;cursor:pointer;transition:all .15s;box-shadow:0 0 30px rgba(200,241,53,.25);}
+    .btn-cad:active{transform:scale(.98);background:var(--lime2);}
+    .btn-cad:disabled{opacity:.6;cursor:not-allowed;}
+    .success-box{width:100%;background:rgba(200,241,53,.06);border:1.5px solid rgba(200,241,53,.3);border-radius:16px;padding:24px;margin-bottom:20px;text-align:center;display:none;}
+    .success-box.show{display:block;}
+    .success-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:8px;}
+    .success-sub{font-size:14px;color:var(--t2);margin-bottom:20px;line-height:1.6;}
+    .btn-app{display:block;background:var(--lime);color:#000;text-decoration:none;padding:17px;border-radius:12px;font-size:16px;font-weight:800;font-family:'Inter',sans-serif;box-shadow:0 0 30px rgba(200,241,53,.3);animation:pulse 2s ease infinite;}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(200,241,53,.25)}50%{box-shadow:0 0 50px rgba(200,241,53,.5)}}
+    .features{width:100%;background:var(--card);border:1px solid #222;border-radius:16px;padding:20px;margin-bottom:24px;text-align:left;}
+    .features-title{font-size:11px;font-weight:700;color:var(--lime);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;}
+    .feat-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:14px;color:var(--t2);}
+    .feat-row:last-child{border-bottom:none;}
+    .feat-icon{width:32px;height:32px;background:#1a1a1a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+    .logo{font-size:13px;font-weight:700;color:#333;margin-top:8px;}
+    .logo span{display:inline-block;width:6px;height:6px;background:var(--lime);border-radius:50%;margin-right:5px;vertical-align:middle;}
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <canvas class="confetti" id="confetti"></canvas>
+
+  <div class="wrap">
+    <div class="check">⚡</div>
+    <h1>Pagamento confirmado!<br><span>Crie sua conta agora</span> 🎉</h1>
+    <p class="sub">Seu acesso Pro está ativo. Crie sua conta abaixo para entrar no app — leva menos de 30 segundos.</p>
+
+    <div class="steps">
+      <div class="steps-title">🗺️ PRÓXIMOS PASSOS</div>
+      <div class="step-row">
+        <div class="step-num done">✓</div>
+        <div class="step-text"><strong>Pagamento confirmado</strong> — Seu Pro está ativo</div>
+      </div>
+      <div class="step-row">
+        <div class="step-num" id="step2Num">2</div>
+        <div class="step-text"><strong>Criar sua conta</strong> — nome, e-mail e senha</div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>Acessar o app</strong> — já como Pro, direto</div>
+      </div>
+    </div>
+
+    <div class="form-box" id="formBox">
+      <div class="form-title">Criar sua conta Pro</div>
+      <div class="form-sub">Use o mesmo e-mail da compra para vincular automaticamente.</div>
+      <input class="inp" id="cadNome" type="text" placeholder="Seu nome" autocomplete="name">
+      <input class="inp" id="cadEmail" type="email" placeholder="Seu e-mail" autocomplete="email">
+      <input class="inp" id="cadSenha" type="password" placeholder="Crie uma senha (mín. 6 caracteres)" autocomplete="new-password">
+      <div class="err" id="cadErr"></div>
+      <button class="btn-cad" id="btnCad" onclick="criarConta()">⚡ Criar Conta e Acessar o App →</button>
+    </div>
+
+    <div class="success-box" id="successBox">
+      <div style="font-size:48px;margin-bottom:12px">🏆</div>
+      <div class="success-title">Conta criada com sucesso!</div>
+      <div class="success-sub">Você já está logado como Pro. Clique abaixo para começar a criar conteúdo agora.</div>
+      <a class="btn-app" href="/" id="btnApp">⚡ Acessar o FitCreator Pro →</a>
+    </div>
+
+    <div class="features">
+      <div class="features-title">⚡ O QUE VOCÊ DESBLOQUEOU</div>
+      <div class="feat-row"><div class="feat-icon">🔥</div>Trends da Semana em alta</div>
+      <div class="feat-row"><div class="feat-icon">🎵</div>Músicas em Alta para Reels</div>
+      <div class="feat-row"><div class="feat-icon">📊</div>Score Viral — analise antes de postar</div>
+      <div class="feat-row"><div class="feat-icon">🎬</div>Série de 5 Vídeos conectados</div>
+      <div class="feat-row"><div class="feat-icon">♾️</div>IA ilimitada — sem travar jamais</div>
+      <div class="feat-row"><div class="feat-icon">🏆</div>Desafio 30 Dias completo</div>
+    </div>
+
+    <div class="logo"><span></span>FitCreator AI</div>
+  </div>
+
+  <script>
+    // ── SUPABASE ──
+    const SUPA_URL = 'https://nrzxgzebicmsqmwgadnl.supabase.co';
+    const SUPA_KEY = 'sb_publishable_ss2ggNwCxAF_AOnryWn62A_VcS0jnKW';
+    let supa = null;
+    try { supa = supabase.createClient(SUPA_URL, SUPA_KEY); } catch(e){}
+
+    // ✅ params já declarado no <head> — reutiliza aqui
+    const emailParam = params.get('email') || '';
+    if(emailParam) document.getElementById('cadEmail').value = emailParam;
+
+    // ── CRIAR CONTA ──
+    async function criarConta(){
+      const nome = (document.getElementById('cadNome').value || '').trim();
+      const email = (document.getElementById('cadEmail').value || '').trim().toLowerCase();
+      const senha = document.getElementById('cadSenha').value || '';
+      const err = document.getElementById('cadErr');
+      const btn = document.getElementById('btnCad');
+
+      if(!nome || !email || !email.includes('@') || senha.length < 6){
+        err.style.display = 'block';
+        err.textContent = '❌ Preencha todos os campos (senha mín. 6 caracteres)';
+        setTimeout(()=>err.style.display='none', 3000);
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Criando sua conta...';
+
+      const thisMonth = new Date().getFullYear()+'-'+(new Date().getMonth()+1);
+
+      // ── SALVAR NO SUPABASE ──
+      try {
+        if(supa){
+          const {data: existe} = await supa
+            .from('usuarios')
+            .select('email')
+            .eq('email', email)
+            .single();
+
+          if(existe){
+            await supa.from('usuarios').update({
+              plano: 'pro',
+              creditos: 999999,
+              updated_at: new Date().toISOString()
+            }).eq('email', email);
+          } else {
+            await supa.from('usuarios').insert([{
+              nome, email, senha,
+              plano: 'pro',
+              creditos: 999999,
+              credit_month: thisMonth
+            }]);
+          }
+        }
+      } catch(e){ console.warn('Supabase erro:', e); }
+
+      // ── SALVAR NO LOCALSTORAGE ──
+      const LS = 'fitcreator_v3';
+      try {
+        const raw = JSON.parse(localStorage.getItem(LS) || '{}');
+        const users = raw.users || {};
+        users[email] = { nome, senha, plan: 'pro', credits: 999999, creditMonth: thisMonth, createdAt: Date.now() };
+        raw.users = users;
+        raw.currentUser = email;
+        raw.userNome = nome;
+        raw.plan = 'pro';
+        raw.credits = 999999;
+        raw.creditMonth = thisMonth;
+        raw.sessionActive = true;
+        localStorage.setItem(LS, JSON.stringify(raw));
+      } catch(e){}
+
+      // ── SUCESSO ──
+      document.getElementById('step2Num').textContent = '✓';
+      document.getElementById('step2Num').className = 'step-num done';
+      document.getElementById('formBox').style.display = 'none';
+      document.getElementById('successBox').classList.add('show');
+
+      if(typeof fbq !== 'undefined'){
+        fbq('track', 'CompleteRegistration', { content_name: 'FitCreator Pro', status: true });
+      }
+
+      // Redirecionar automaticamente em 4 segundos
+      setTimeout(()=>{ window.location.href = '/'; }, 4000);
+    }
+
+    // ── CONFETTI ──
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const colors = ['#C8F135','#32d583','#fff','#ffaa00','#a080ff'];
+    const pieces = Array.from({length:70},()=>({
+      x:Math.random()*canvas.width,
+      y:Math.random()*canvas.height-canvas.height,
+      r:Math.random()*5+2,
+      c:colors[Math.floor(Math.random()*colors.length)],
+      vx:(Math.random()-.5)*2,
+      vy:Math.random()*2.5+1,
+      op:Math.random()*.6+.3
+    }));
+    let frame=0;
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      pieces.forEach(p=>{
+        ctx.globalAlpha=p.op;ctx.fillStyle=p.c;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+        p.x+=p.vx;p.y+=p.vy;
+        if(p.y>canvas.height){p.y=-10;p.x=Math.random()*canvas.width;}
+      });
+      ctx.globalAlpha=1;
+      if(frame++<250) requestAnimationFrame(draw);
+    }
+    draw();
+  </script>
+</body>
+</html>
