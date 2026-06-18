@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit FitCreator — Para Personal Trainer | Conteúdo Todo Dia</title>
+  <meta name="description" content="4 materiais prontos para personal trainer postar todo dia, atrair alunos e crescer nas redes. 50 hooks virais, calendário 30 dias, 100 legendas prontas e método revitalização.">
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','4247280335521120');
+    fbq('track','PageView');
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --lime:#C8F135;--lime2:#a8d420;--bg:#080808;--card:#141414;
+      --card2:#1a1a1a;--white:#f0f0f0;--gray:#888;--gray2:#2a2a2a;
+      --red:#ff4444;--orange:#ff8c42;--green:#32d583;--purple:#b97cff;
+    }
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;overflow-x:hidden;}
+
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(8,8,8,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.04);}
+    .nav-logo{font-size:15px;font-weight:900;color:var(--lime);display:flex;align-items:center;gap:6px;}
+    .nav-cta{background:var(--lime);color:#000;font-size:12px;font-weight:800;padding:10px 18px;border-radius:30px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}
+    .nav-cta:hover{background:var(--lime2);}
+
+    /* WRAP */
+    .wrap{max-width:580px;margin:0 auto;padding:0 22px;}
+
+    /* TICKER */
+    .ticker-wrap{background:var(--lime);padding:10px 0;overflow:hidden;white-space:nowrap;margin-top:56px;}
+    .ticker-inner{display:inline-block;animation:ticker 24s linear infinite;font-size:11px;font-weight:900;color:#000;letter-spacing:2px;}
+    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* HERO */
+    .hero{padding:64px 0 56px;text-align:center;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(200,241,53,0.08);border:1.5px solid rgba(200,241,53,0.2);color:var(--lime);font-size:11px;font-weight:700;padding:7px 16px;border-radius:30px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:24px;}
+    .hero-title{font-size:clamp(38px,10vw,64px);font-weight:900;line-height:0.96;letter-spacing:-2px;margin-bottom:22px;}
+    .hero-title .hl{color:var(--lime);}
+    .hero-title .red{color:var(--red);}
+    .hero-title .strike{text-decoration:line-through;color:#2a2a2a;}
+    .hero-sub{font-size:clamp(15px,4vw,18px);color:#888;line-height:1.7;margin-bottom:32px;max-width:440px;margin-left:auto;margin-right:auto;}
+    .hero-proof{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:32px;flex-wrap:wrap;}
+    .hp-avs{display:flex;}
+    .hp-av{width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#000;flex-shrink:0;}
+    .hp-av:first-child{margin-left:0;}
+    .hp-av:nth-child(1){background:#C8F135;}
+    .hp-av:nth-child(2){background:#32d583;}
+    .hp-av:nth-child(3){background:#4d9fff;}
+    .hp-av:nth-child(4){background:#ff8c42;}
+    .hp-av:nth-child(5){background:#b97cff;}
+    .hp-txt{font-size:13px;color:#666;}
+    .hp-txt strong{color:#ccc;}
+    .hero-price-tag{display:inline-flex;align-items:center;gap:12px;background:rgba(200,241,53,0.06);border:1px solid rgba(200,241,53,0.15);border-radius:50px;padding:10px 22px;margin-bottom:20px;}
+    .hpt-from{font-size:13px;color:#444;text-decoration:line-through;}
+    .hpt-price{font-size:22px;font-weight:900;color:var(--lime);}
+    .hpt-desc{font-size:12px;color:#555;}
+    .btn-hero{display:block;width:100%;background:var(--lime);color:#000;font-size:17px;font-weight:900;padding:20px;border-radius:14px;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;text-decoration:none;text-align:center;letter-spacing:0.3px;}
+    .btn-hero:hover{background:var(--lime2);transform:translateY(-2px);}
+    @keyframes glow{0%,100%{box-shadow:0 0 20px rgba(200,241,53,0.2)}50%{box-shadow:0 0 50px rgba(200,241,53,0.45)}}
+    .btn-glow{animation:glow 2.5s ease infinite;}
+    .hero-guar{font-size:12px;color:#444;margin-top:12px;}
+    .hero-guar em{color:#666;font-style:normal;}
+    .scroll-hint{margin-top:40px;text-align:center;}
+    @keyframes bounce2{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+    .scroll-hint span{font-size:22px;color:#222;display:inline-block;animation:bounce2 2s ease infinite;}
+
+    /* SECTIONS */
+    .sec{padding:64px 0;}
+    .sec-label{font-size:10px;font-weight:700;color:var(--lime);letter-spacing:4px;text-transform:uppercase;margin-bottom:14px;}
+    .sec-title{font-size:clamp(26px,7vw,40px);font-weight:900;line-height:1.05;letter-spacing:-1px;margin-bottom:14px;}
+    .sec-sub{font-size:15px;color:#666;line-height:1.75;margin-bottom:32px;}
+    .divider{border:none;border-top:1px solid #161616;margin:0;}
+
+    /* DOR */
+    .dor-list{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+    .dor-item{background:var(--card);border:1px solid var(--gray2);border-radius:14px;padding:18px 18px 18px 22px;display:flex;gap:14px;align-items:flex-start;position:relative;overflow:hidden;}
+    .dor-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red);}
+    .dor-ico{font-size:22px;flex-shrink:0;margin-top:2px;}
+    .dor-t{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px;}
+    .dor-d{font-size:13px;color:#555;line-height:1.55;}
+
+    /* STAT GRID */
+    .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:28px 0;}
+    .stat-box{background:var(--card);border:1px solid var(--gray2);border-radius:14px;padding:20px 16px;text-align:center;}
+    .stat-n{font-size:42px;font-weight:900;color:var(--lime);line-height:1;}
+    .stat-l{font-size:12px;color:#555;margin-top:6px;line-height:1.4;}
+
+    /* KIT ITEMS */
+    .kit-list{display:flex;flex-direction:column;gap:10px;margin:28px 0;}
+    .kit-item{background:var(--card);border:1px solid var(--gray2);border-radius:16px;padding:20px 20px 20px 24px;display:flex;gap:14px;align-items:flex-start;position:relative;overflow:hidden;transition:border-color .2s,transform .2s;}
+    .kit-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--lime);}
+    .kit-item:hover{border-color:rgba(200,241,53,0.25);transform:translateX(3px);}
+    .kit-ico-wrap{width:46px;height:46px;background:rgba(200,241,53,0.07);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+    .kit-n{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px;}
+    .kit-d{font-size:13px;color:#555;line-height:1.5;}
+    .kit-badge{display:inline-block;background:rgba(200,241,53,0.08);color:var(--lime);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:7px;letter-spacing:1px;}
+    .kit-num{font-size:11px;font-weight:700;color:#333;margin-bottom:4px;letter-spacing:1px;}
+
+    /* STEPS */
+    .step-list{display:flex;flex-direction:column;margin:28px 0;}
+    .step-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px solid #161616;}
+    .step-item:last-child{border-bottom:none;}
+    .step-n{width:38px;height:38px;border-radius:50%;background:rgba(200,241,53,0.08);border:2px solid rgba(200,241,53,0.2);color:var(--lime);font-size:15px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+    .step-t{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;}
+    .step-d{font-size:13px;color:#555;line-height:1.55;}
+    .step-time{display:inline-block;background:rgba(200,241,53,0.07);color:var(--lime);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:7px;}
+
+    /* COMPARE */
+    .compare{display:flex;gap:10px;margin:28px 0;}
+    .cmp{flex:1;border-radius:14px;padding:18px 16px;}
+    .cmp.before{background:#0e0000;border:1.5px solid rgba(255,68,68,0.2);}
+    .cmp.after{background:#001000;border:1.5px solid rgba(200,241,53,0.2);}
+    .cmp-lbl{font-size:10px;font-weight:700;letter-spacing:2px;margin-bottom:12px;}
+    .cmp.before .cmp-lbl{color:var(--red);}
+    .cmp.after .cmp-lbl{color:var(--lime);}
+    .cmp-row{font-size:13px;color:#888;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;gap:7px;line-height:1.3;}
+    .cmp-row:last-child{border-bottom:none;}
+
+    /* TESTIMONIALS */
+    .test-list{display:flex;flex-direction:column;gap:12px;margin:28px 0;}
+    .test-card{background:var(--card);border:1px solid var(--gray2);border-radius:16px;padding:22px;}
+    .test-stars{color:var(--lime);font-size:13px;letter-spacing:3px;margin-bottom:10px;}
+    .test-txt{font-size:14px;color:#aaa;line-height:1.75;font-style:italic;margin-bottom:14px;}
+    .test-author{display:flex;align-items:center;gap:10px;}
+    .test-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#000;flex-shrink:0;}
+    .test-name{font-size:13px;font-weight:700;color:var(--white);}
+    .test-role{font-size:11px;color:#444;margin-top:1px;}
+    .test-result{display:inline-block;background:rgba(200,241,53,0.08);color:var(--lime);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;margin-top:12px;}
+
+    /* PRECO KIT */
+    .price-box{background:var(--card);border:1.5px solid var(--gray2);border-radius:20px;padding:28px 24px;margin:28px 0;}
+    .price-label{font-size:11px;font-weight:700;color:var(--lime);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;}
+    .price-inc{display:flex;flex-direction:column;gap:9px;margin-bottom:22px;}
+    .price-inc-row{display:flex;align-items:center;gap:10px;font-size:14px;color:#aaa;}
+    .price-inc-row::before{content:'✓';color:var(--lime);font-weight:900;font-size:15px;flex-shrink:0;}
+    .price-from{font-size:13px;color:#333;text-decoration:line-through;margin-bottom:4px;}
+    .price-main{font-size:58px;font-weight:900;color:var(--lime);line-height:1;margin-bottom:4px;}
+    .price-desc{font-size:13px;color:#444;margin-bottom:22px;}
+    .btn-kit{display:block;width:100%;background:var(--lime);color:#000;font-size:17px;font-weight:900;padding:20px;border-radius:14px;border:none;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;text-align:center;transition:all .2s;margin-bottom:10px;}
+    .btn-kit:hover{background:var(--lime2);transform:translateY(-2px);}
+    .price-guar{font-size:12px;color:#333;text-align:center;}
+    .price-guar em{color:#555;font-style:normal;}
+
+    /* OFERTA APP */
+    .app-section{background:rgba(200,241,53,0.03);border-top:1px solid rgba(200,241,53,0.1);border-bottom:1px solid rgba(200,241,53,0.1);padding:64px 0;}
+    .app-badge{display:inline-block;background:var(--lime);color:#000;font-size:11px;font-weight:900;padding:7px 18px;border-radius:30px;letter-spacing:1.5px;margin-bottom:20px;}
+    .app-title{font-size:clamp(26px,7vw,40px);font-weight:900;line-height:1.05;letter-spacing:-1px;margin-bottom:14px;}
+    .app-title .hl{color:var(--lime);}
+    .app-sub{font-size:15px;color:#666;line-height:1.75;margin-bottom:28px;}
+    .app-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+    .app-feat{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--gray2);border-radius:12px;padding:16px 18px;}
+    .app-feat-ico{width:38px;height:38px;background:rgba(200,241,53,0.08);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+    .app-feat-t{font-size:14px;font-weight:700;color:var(--white);margin-bottom:3px;}
+    .app-feat-d{font-size:12px;color:#555;line-height:1.5;}
+    .app-price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:20px;}
+    .app-from{font-size:14px;color:#333;text-decoration:line-through;}
+    .app-price{font-size:42px;font-weight:900;color:var(--lime);line-height:1;}
+    .app-period{font-size:14px;color:#555;}
+    .app-urgency{background:rgba(255,140,66,0.08);border:1px solid rgba(255,140,66,0.2);border-radius:12px;padding:14px 18px;margin-bottom:22px;display:flex;gap:10px;align-items:flex-start;}
+    .app-urgency-ico{font-size:18px;flex-shrink:0;}
+    .app-urgency-txt{font-size:13px;color:#ff8c42;line-height:1.55;}
+    .btn-app-primary{display:block;width:100%;background:var(--lime);color:#000;font-size:17px;font-weight:900;padding:20px;border-radius:14px;border:none;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;text-align:center;transition:all .2s;margin-bottom:10px;}
+    .btn-app-primary:hover{background:var(--lime2);transform:translateY(-2px);}
+    .btn-app-skip{display:block;width:100%;background:transparent;color:#444;font-size:13px;font-weight:500;padding:14px;border-radius:14px;border:1px solid #222;cursor:pointer;font-family:'Inter',sans-serif;text-decoration:none;text-align:center;transition:all .2s;}
+    .btn-app-skip:hover{color:#666;border-color:#333;}
+
+    /* FAQ */
+    .faq-list{display:flex;flex-direction:column;gap:8px;margin:28px 0;}
+    .faq-item{background:var(--card);border:1px solid var(--gray2);border-radius:14px;overflow:hidden;}
+    .faq-q{padding:18px 20px;font-size:14px;font-weight:700;color:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;gap:12px;}
+    .faq-ico{font-size:18px;color:var(--lime);flex-shrink:0;transition:transform .25s;}
+    .faq-item.open .faq-ico{transform:rotate(45deg);}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+    .faq-item.open .faq-a{max-height:250px;}
+    .faq-a-inner{padding:0 20px 18px;font-size:13px;color:#555;line-height:1.75;border-top:1px solid #1a1a1a;}
+
+    /* FINAL CTA */
+    .final-cta{padding:64px 0;text-align:center;}
+    .final-title{font-size:clamp(28px,8vw,48px);font-weight:900;line-height:1.0;letter-spacing:-1.5px;margin-bottom:14px;}
+    .final-title .hl{color:var(--lime);}
+    .final-sub{font-size:15px;color:#555;line-height:1.7;margin-bottom:36px;}
+    .final-options{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+    .final-opt{border-radius:14px;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;text-decoration:none;transition:all .2s;}
+    .final-opt.primary{background:var(--lime);}
+    .final-opt.primary:hover{background:var(--lime2);transform:translateY(-2px);}
+    .final-opt.secondary{background:transparent;border:1.5px solid rgba(200,241,53,0.25);}
+    .final-opt.secondary:hover{border-color:rgba(200,241,53,0.5);background:rgba(200,241,53,0.04);}
+    .fo-left{}
+    .fo-name{font-size:16px;font-weight:900;}
+    .final-opt.primary .fo-name{color:#000;}
+    .final-opt.secondary .fo-name{color:var(--white);}
+    .fo-desc{font-size:12px;margin-top:3px;}
+    .final-opt.primary .fo-desc{color:rgba(0,0,0,0.5);}
+    .final-opt.secondary .fo-desc{color:#444;}
+    .fo-price{font-size:22px;font-weight:900;}
+    .final-opt.primary .fo-price{color:#000;}
+    .final-opt.secondary .fo-price{color:var(--lime);}
+    .final-guar{font-size:12px;color:#333;line-height:1.7;}
+    .final-guar em{color:#444;font-style:normal;}
+
+    /* FOOTER */
+    .footer{padding:40px 24px;text-align:center;border-top:1px solid #111;}
+    .footer-logo{font-size:16px;font-weight:900;color:var(--lime);margin-bottom:8px;}
+    .footer-txt{font-size:12px;color:#2a2a2a;line-height:1.7;}
+
+    /* ANIMATIONS */
+    .fi{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease;}
+    .fi.v{opacity:1;transform:translateY(0);}
+    .fi.d1{transition-delay:.1s;}.fi.d2{transition-delay:.2s;}.fi.d3{transition-delay:.3s;}.fi.d4{transition-delay:.4s;}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">⚡ FitCreator</div>
+  <button class="nav-cta" onclick="document.getElementById('kit-oferta').scrollIntoView({behavior:'smooth'})">Quero o Kit →</button>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">🔥 50 HOOKS VIRAIS · 📅 CALENDÁRIO 30 DIAS · ✍️ 100 LEGENDAS PRONTAS · 🔄 MÉTODO REVITALIZAÇÃO · ⚡ PARA PERSONAL TRAINER · 🔥 50 HOOKS VIRAIS · 📅 CALENDÁRIO 30 DIAS · ✍️ 100 LEGENDAS PRONTAS · 🔄 MÉTODO REVITALIZAÇÃO · ⚡ PARA PERSONAL TRAINER · </div>
+</div>
+
+<!-- HERO -->
+<div class="wrap">
+<section class="hero">
+  <div class="hero-eyebrow fi">⚡ Só para Personal Trainer — Oferta de Lançamento</div>
+
+  <h1 class="hero-title fi d1">
+    O personal que<br>posta todo dia<br><span class="hl">lota a agenda.</span><br>O que não posta,<br><span class="red">perde aluno.</span>
+  </h1>
+
+  <p class="hero-sub fi d2">
+    Em 10 minutos por dia você tem hook, legenda e conteúdo pronto para postar — com os 4 materiais que mais de 1.200 personals já usam para crescer nas redes e fechar alunos pelo Instagram.
+  </p>
+
+  <div class="hero-proof fi d3">
+    <div class="hp-avs">
+      <div class="hp-av">R</div><div class="hp-av">C</div>
+      <div class="hp-av">M</div><div class="hp-av">P</div><div class="hp-av">A</div>
+    </div>
+    <div class="hp-txt"><strong>+1.200 personals</strong> já usam o Kit</div>
+  </div>
+
+  <div class="hero-price-tag fi d3">
+    <span class="hpt-from">R$79,90</span>
+    <span class="hpt-price">R$19,90</span>
+    <span class="hpt-desc">pagamento único</span>
+  </div>
+
+  <a href="https://pay.hotmart.com/K106332527H?off=u7dqupaf&checkoutMode=10" class="btn-hero btn-glow fi d4" onclick="fbq('track','InitiateCheckout',{value:19.90,currency:'BRL',content_name:'Kit FitCreator'})">
+    📦 Quero o Kit Agora — R$19,90 →
+  </a>
+  <p class="hero-guar fi d4">🔒 Garantia 7 dias · <em>PIX · Boleto · Cartão</em></p>
+
+  <div class="scroll-hint fi">
+    <span>↓</span>
+  </div>
+</section>
+</div>
+
+<hr class="divider">
+
+<!-- DOR -->
+<div class="wrap">
+<section class="sec">
+  <div class="sec-label fi">O problema real</div>
+  <h2 class="sec-title fi">Você sabe o que<br>vai postar amanhã?</h2>
+  <p class="sec-sub fi">Não é falta de conhecimento. Não é falta de talento. É falta de sistema — e isso tem solução.</p>
+
+  <div class="dor-list">
+    <div class="dor-item fi">
+      <div class="dor-ico">😶</div>
+      <div><div class="dor-t">Mente em branco toda semana</div><div class="dor-d">Você abre o celular para gravar e trava. Não sabe o que falar, qual tema escolher, como começar a frase.</div></div>
+    </div>
+    <div class="dor-item fi d1">
+      <div class="dor-ico">⏰</div>
+      <div><div class="dor-t">2 horas para criar 1 post</div><div class="dor-d">Tempo que deveria estar com alunos vai para tentar criar conteúdo. E no final, não sai nada que você goste.</div></div>
+    </div>
+    <div class="dor-item fi d2">
+      <div class="dor-ico">📉</div>
+      <div><div class="dor-t">Posta esporadicamente</div><div class="dor-d">Semana que vai, semana que não. O algoritmo pune quem some — e seu alcance vai a zero.</div></div>
+    </div>
+    <div class="dor-item fi d3">
+      <div class="dor-ico">😤</div>
+      <div><div class="dor-t">Concorrente crescendo mais</div><div class="dor-d">Você tem mais conhecimento. Mais anos de experiência. Mas ele posta todo dia e está lotado de alunos.</div></div>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-box fi"><div class="stat-n">87%</div><div class="stat-l">dos personals postam menos de 3x por semana</div></div>
+    <div class="stat-box fi d1"><div class="stat-n">2h</div><div class="stat-l">tempo médio gasto por post sem sistema</div></div>
+    <div class="stat-box fi d2"><div class="stat-n">3x</div><div class="stat-l">mais alcance para quem posta todo dia</div></div>
+    <div class="stat-box fi d3"><div class="stat-n">70%</div><div class="stat-l">dos alunos pesquisam o personal no Instagram antes de contratar</div></div>
+  </div>
+</section>
+</div>
+
+<hr class="divider">
+
+<!-- KIT -->
+<div class="wrap">
+<section class="sec">
+  <div class="sec-label fi">A solução</div>
+  <h2 class="sec-title fi">Kit FitCreator —<br>4 materiais que<br><span style="color:var(--lime)">resolvem de vez.</span></h2>
+  <p class="sec-sub fi">Tudo pronto para usar hoje. Sem curso, sem tutorial, sem precisar de inspiração. Só abrir e usar.</p>
+
+  <div class="kit-list">
+    <div class="kit-item fi">
+      <div class="kit-ico-wrap">🔥</div>
+      <div>
+        <div class="kit-num">MATERIAL 01</div>
+        <div class="kit-n">50 Hooks Virais</div>
+        <div class="kit-d">As primeiras frases que param o scroll e prendem a atenção. 6 categorias: autoridade, erro do aluno, polêmica, resultado, mito e bastidores. Adapte em 30 segundos.</div>
+        <div class="kit-badge">PARA O SCROLL</div>
+      </div>
+    </div>
+    <div class="kit-item fi d1">
+      <div class="kit-ico-wrap">📅</div>
+      <div>
+        <div class="kit-num">MATERIAL 02</div>
+        <div class="kit-n">Calendário 30 Dias</div>
+        <div class="kit-d">Um mês inteiro planejado. Tema, formato, hook sugerido e CTA para cada dia. Nunca mais "o que eu posto hoje?" abre e já sabe.</div>
+        <div class="kit-badge">30 DIAS PRONTOS</div>
+      </div>
+    </div>
+    <div class="kit-item fi d2">
+      <div class="kit-ico-wrap">✍️</div>
+      <div>
+        <div class="kit-num">MATERIAL 03</div>
+        <div class="kit-n">100 Legendas Prontas</div>
+        <div class="kit-d">Copie, adapte e publique. 10 nichos fitness com CTA e hashtags prontas para converter seguidores em alunos — emagrecimento, hipertrofia, treino feminino e mais.</div>
+        <div class="kit-badge">COPY PRONTA</div>
+      </div>
+    </div>
+    <div class="kit-item fi d3">
+      <div class="kit-ico-wrap">🔄</div>
+      <div>
+        <div class="kit-num">MATERIAL 04 — EXCLUSIVO</div>
+        <div class="kit-n">Método Revitalização</div>
+        <div class="kit-d">Como pegar qualquer trend ou conteúdo que está funcionando nas redes e transformar com a sua voz, sua experiência e seu nicho. Nunca mais fique sem ideia.</div>
+        <div class="kit-badge">EXCLUSIVO</div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<hr class="divider">
+
+<!-- COMO FUNCIONA -->
+<div class="wrap">
+<section class="sec">
+  <div class="sec-label fi">Como funciona</div>
+  <h2 class="sec-title fi">De 2 horas para<br>10 minutos por post.</h2>
+
+  <div class="step-list">
+    <div class="step-item fi">
+      <div class="step-n">1</div>
+      <div><div class="step-t">Compra e recebe agora</div><div class="step-d">Os 4 PDFs chegam no seu e-mail imediatamente. Funciona no celular, sem instalar nada.</div><div class="step-time">⏱ 2 minutos</div></div>
+    </div>
+    <div class="step-item fi d1">
+      <div class="step-n">2</div>
+      <div><div class="step-t">Escolhe o hook do dia</div><div class="step-d">Abre o PDF, escolhe um dos 50 hooks e adapta para o seu nicho em segundos. Frase de abertura pronta.</div><div class="step-time">⏱ 30 segundos</div></div>
+    </div>
+    <div class="step-item fi d2">
+      <div class="step-n">3</div>
+      <div><div class="step-t">Pega a legenda pronta</div><div class="step-d">100 opções organizadas por nicho. Copia, coloca o exemplo do seu aluno e está pronto.</div><div class="step-time">⏱ 1 minuto</div></div>
+    </div>
+    <div class="step-item fi d3">
+      <div class="step-n">4</div>
+      <div><div class="step-t">Grava, edita e publica</div><div class="step-d">Com hook e legenda prontos, só abrir a câmera. Conteúdo do dia resolvido.</div><div class="step-time">⏱ Feito!</div></div>
+    </div>
+  </div>
+
+  <div class="compare fi">
+    <div class="cmp before">
+      <div class="cmp-lbl">❌ SEM O KIT</div>
+      <div class="cmp-row">😩 2h por post</div>
+      <div class="cmp-row">📉 Posta 2x/semana</div>
+      <div class="cmp-row">🎲 Sem estratégia</div>
+      <div class="cmp-row">😤 Alcance caindo</div>
+      <div class="cmp-row">💭 Frustração constante</div>
+    </div>
+    <div class="cmp after">
+      <div class="cmp-lbl">✅ COM O KIT</div>
+      <div class="cmp-row">⚡ 10min por post</div>
+      <div class="cmp-row">📈 Posta todo dia</div>
+      <div class="cmp-row">🎯 Calendário pronto</div>
+      <div class="cmp-row">🚀 Alcance crescendo</div>
+      <div class="cmp-row">😌 Consistência real</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<hr class="divider">
+
+<!-- PROVAS -->
+<div class="wrap">
+<section class="sec">
+  <div class="sec-label fi">Resultados reais</div>
+  <h2 class="sec-title fi">Quem usou,<br>não para mais.</h2>
+
+  <div class="test-list">
+    <div class="test-card fi">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-txt">"Nunca mais fiquei sem saber o que postar. O calendário sozinho já vale muito mais do que paguei. Postei 30 dias seguidos e meu alcance triplicou — recebi 3 mensagens de novos alunos."</div>
+      <div class="test-author"><div class="test-av" style="background:#C8F135">R</div><div><div class="test-name">Rafaela M.</div><div class="test-role">Personal Trainer · São Paulo</div></div></div>
+      <div class="test-result">📈 30 dias consecutivos de posts</div>
+    </div>
+    <div class="test-card fi d1">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-txt">"Os hooks mudaram tudo. Antes ficava 1 hora tentando escrever a primeira frase. Agora pego um pronto, adapto em 30 segundos e grave. Meus vídeos começaram a viralizar na primeira semana."</div>
+      <div class="test-author"><div class="test-av" style="background:#32d583">C</div><div><div class="test-name">Carlos H.</div><div class="test-role">Personal Trainer · Rio de Janeiro</div></div></div>
+      <div class="test-result">🔥 Primeiro vídeo viral na semana 1</div>
+    </div>
+    <div class="test-card fi d2">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-txt">"Fechei 3 alunos novos no primeiro mês usando os conteúdos do Kit. As legendas com CTA são incríveis — as pessoas realmente mandam mensagem perguntando sobre meus serviços."</div>
+      <div class="test-author"><div class="test-av" style="background:#4d9fff">M</div><div><div class="test-name">Marina C.</div><div class="test-role">Personal Trainer · Belo Horizonte</div></div></div>
+      <div class="test-result">💰 3 alunos novos no primeiro mês</div>
+    </div>
+    <div class="test-card fi d3">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-txt">"O Método Revitalização foi o que mais me surpreendeu. Nunca mais fico sem ideia — qualquer trend vira conteúdo meu com a minha cara em minutos. Passei de 2 para 7 posts por semana."</div>
+      <div class="test-author"><div class="test-av" style="background:#ff8c42">P</div><div><div class="test-name">Pedro A.</div><div class="test-role">Personal Trainer · Curitiba</div></div></div>
+      <div class="test-result">⚡ De 2 para 7 posts por semana</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<hr class="divider">
+
+<!-- PREÇO KIT -->
+<div class="wrap">
+<section class="sec" id="kit-oferta">
+  <div class="sec-label fi">Sua oferta</div>
+  <h2 class="sec-title fi">Tudo isso por<br><span style="color:var(--lime)">R$19,90.</span></h2>
+  <p class="sec-sub fi">Pagamento único. Acesso imediato. Sem mensalidade. Sem renovação automática.</p>
+
+  <div class="price-box fi">
+    <div class="price-label">📦 Kit FitCreator — o que você recebe</div>
+    <div class="price-inc">
+      <div class="price-inc-row">50 Hooks Virais para Personal Trainer</div>
+      <div class="price-inc-row">Calendário 30 Dias de Conteúdo</div>
+      <div class="price-inc-row">100 Legendas Prontas com CTA e hashtags</div>
+      <div class="price-inc-row">Método Revitalização de Conteúdo</div>
+      <div class="price-inc-row">Acesso imediato por e-mail</div>
+      <div class="price-inc-row">Funciona no celular · sem instalar nada</div>
+    </div>
+    <div class="price-from">De R$79,90</div>
+    <div class="price-main">R$19,90</div>
+    <div class="price-desc">pagamento único · acesso imediato · 4 PDFs</div>
+    <a href="https://pay.hotmart.com/K106332527H?off=u7dqupaf&checkoutMode=10" class="btn-kit btn-glow" onclick="fbq('track','InitiateCheckout',{value:19.90,currency:'BRL',content_name:'Kit FitCreator'})">
+      📦 Quero o Kit — R$19,90 →
+    </a>
+    <div class="price-guar">🔒 Garantia 7 dias · <em>Se não gostar, devolvemos 100% · PIX · Boleto · Cartão</em></div>
+  </div>
+</section>
+</div>
+
+<hr class="divider">
+
+<!-- OFERTA APP -->
+<div class="app-section">
+<div class="wrap">
+  <div class="app-badge fi">⚡ OFERTA ESPECIAL — DISPONÍVEL NO CHECKOUT</div>
+  <h2 class="app-title fi">Quer ir além<br>do Kit? Adicione<br>a <span class="hl">IA do FitCreator.</span></h2>
+  <p class="app-sub fi">Enquanto o Kit te dá materiais prontos, o App Pro cria conteúdo personalizado para o seu nicho em 30 segundos — todo dia, ilimitado, com inteligência artificial.</p>
+
+  <div class="app-feats">
+    <div class="app-feat fi">
+      <div class="app-feat-ico">🔥</div>
+      <div><div class="app-feat-t">Hook viral gerado por IA</div><div class="app-feat-d">Digita o tema, a IA cria a frase de abertura perfeita para o seu nicho.</div></div>
+    </div>
+    <div class="app-feat fi d1">
+      <div class="app-feat-ico">🎬</div>
+      <div><div class="app-feat-t">Roteiro completo para Reels</div><div class="app-feat-d">Estrutura, falas e CTA prontos. Você só abre a câmera e grava.</div></div>
+    </div>
+    <div class="app-feat fi d2">
+      <div class="app-feat-ico">📊</div>
+      <div><div class="app-feat-t">Score Viral antes de postar</div><div class="app-feat-d">A IA analisa o potencial do conteúdo antes de você publicar.</div></div>
+    </div>
+    <div class="app-feat fi d3">
+      <div class="app-feat-ico">🎵</div>
+      <div><div class="app-feat-t">Trends e músicas em alta</div><div class="app-feat-d">Sempre na onda certa. A IA monitora o que está explodindo no fitness.</div></div>
+    </div>
+    <div class="app-feat fi d4">
+      <div class="app-feat-ico">♾️</div>
+      <div><div class="app-feat-t">IA ilimitada — nunca trava</div><div class="app-feat-d">Gere quantos conteúdos quiser. Sem limite, sem crédito, sem parar.</div></div>
+    </div>
+  </div>
+
+  <div class="app-price-row fi">
+    <div class="app-from">De R$109,90</div>
+    <div class="app-price">R$39,99</div>
+    <div class="app-period">/mês</div>
+  </div>
+
+  <div class="app-urgency fi">
+    <div class="app-urgency-ico">⏰</div>
+    <div class="app-urgency-txt">Essa oferta aparece <strong>uma única vez</strong> durante o checkout do Kit. Disponível apenas para quem acessa por esta página — e com desconto de lançamento.</div>
+  </div>
+
+  <a href="https://pay.hotmart.com/K106332527H?off=u7dqupaf&checkoutMode=10" class="btn-app-primary fi" onclick="fbq('track','InitiateCheckout',{value:59.89,currency:'BRL',content_name:'Kit + Pro FitCreator'})">
+    ⚡ Quero Kit + App Pro — R$59,89 →
+  </a>
+  <a href="https://pay.hotmart.com/K106332527H?off=u7dqupaf&checkoutMode=10" class="btn-app-skip fi" onclick="fbq('track','InitiateCheckout',{value:19.90,currency:'BRL',content_name:'Kit FitCreator'})">
+    Não, quero só o Kit por R$19,90
+  </a>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<div class="wrap">
+<section class="sec">
+  <div class="sec-label fi">Dúvidas</div>
+  <h2 class="sec-title fi">Perguntas<br>frequentes.</h2>
+
+  <div class="faq-list">
+    <div class="faq-item fi">
+      <div class="faq-q" onclick="toggleFaq(this)">Como recebo os materiais? <span class="faq-ico">+</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Após a compra, a Hotmart envia um e-mail com o link de acesso aos 4 PDFs imediatamente. Funciona no celular, tablet ou computador — sem instalar nada.</div></div>
+    </div>
+    <div class="faq-item fi d1">
+      <div class="faq-q" onclick="toggleFaq(this)">Funciona para qualquer nicho de personal? <span class="faq-ico">+</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Sim! Os materiais foram criados para personals de todos os nichos: emagrecimento, hipertrofia, treino feminino, funcional, idosos, atletas e mais. Tudo é adaptável para a sua realidade.</div></div>
+    </div>
+    <div class="faq-item fi d2">
+      <div class="faq-q" onclick="toggleFaq(this)">Precisa ter muitos seguidores para funcionar? <span class="faq-ico">+</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Não. Os materiais foram criados especialmente para quem está crescendo. Consistência e hooks certos funcionam em qualquer tamanho de perfil — inclusive do zero.</div></div>
+    </div>
+    <div class="faq-item fi d3">
+      <div class="faq-q" onclick="toggleFaq(this)">Qual a diferença entre o Kit e o App Pro? <span class="faq-ico">+</span></div>
+      <div class="faq-a"><div class="faq-a-inner">O Kit são 4 PDFs com materiais prontos para usar agora — pagamento único. O App Pro é uma IA que cria conteúdo personalizado todo dia — você digita o tema e ela gera hook, roteiro e legenda em 30 segundos (assinatura mensal).</div></div>
+    </div>
+    <div class="faq-item fi d4">
+      <div class="faq-q" onclick="toggleFaq(this)">E se eu não gostar? <span class="faq-ico">+</span></div>
+      <div class="faq-a"><div class="faq-a-inner">Garantia total de 7 dias. Se por qualquer motivo não gostar, basta enviar um e-mail e devolvemos 100% do valor. Sem perguntas, sem burocracia.</div></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<hr class="divider">
+
+<!-- FINAL CTA -->
+<div class="wrap">
+<section class="final-cta">
+  <h2 class="final-title fi">Comece hoje.<br>Cresça essa<br><span class="hl">semana.</span></h2>
+  <p class="final-sub fi">Cada dia sem postar é um aluno que encontrou outro personal nas redes. Isso muda agora.</p>
+
+  <div class="final-options fi">
+    <a href="https://pay.hotmart.com/K106332527H?off=u7dqupaf&checkoutMode=10" class="final-opt primary" onclick="fbq('track','InitiateCheckout',{value:59.89,currency:'BRL',content_name:'Kit + Pro FitCreator'})">
+      <div class="fo-left">
+        <div class="fo-name">⚡ Kit + App Pro</div>
+        <div class="fo-desc">Kit completo + IA ilimitada todo mês</div>
+      </div>
+      <div class="fo-price">R$59,89</div>
+    </a>
+    <a href="https://pay.hotmart.com/K106332527H?off=u7dqupaf&checkoutMode=10" class="final-opt secondary" onclick="fbq('track','InitiateCheckout',{value:19.90,currency:'BRL',content_name:'Kit FitCreator'})">
+      <div class="fo-left">
+        <div class="fo-name">📦 Só o Kit</div>
+        <div class="fo-desc">4 PDFs · pagamento único</div>
+      </div>
+      <div class="fo-price">R$19,90</div>
+    </a>
+  </div>
+
+  <div class="final-guar fi">
+    🔒 Garantia 7 dias · <em>PIX · Boleto · Cartão · Cancele quando quiser</em>
+  </div>
+</section>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">⚡ FitCreator AI</div>
+  <div class="footer-txt">
+    fitcreatorai.com · Sistema de Crescimento Fitness para Personal Trainer<br>
+    © 2026 FitCreator AI · Todos os direitos reservados
+  </div>
+</footer>
+
+<script>
+  // SCROLL ANIMATIONS
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('v'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+  // FAQ
+  function toggleFaq(el) {
+    el.parentElement.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
